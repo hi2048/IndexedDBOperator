@@ -1,9 +1,9 @@
 import config from './config';
 
-const connect = (options = config) => {
+const connect = ({ name = config.name, version  }) => {
   const promise = new Promise((resolve, reject) => {
     let dbConnection;
-    const request = window.indexedDB.open(options.name, options.version);
+    const request = window.indexedDB.open(name, version);
 
     request.onerror = e => {
       reject(e);

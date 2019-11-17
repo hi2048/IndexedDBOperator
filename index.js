@@ -1,17 +1,35 @@
 import connect from './connect';
 
 class IndexedDBOperator {
-  constructor() {
-    if(!IndexedDBOperator.instance) {
-      this.dbConnection = connect();
+  constructor(version) {
+    if(!IndexedDBOperator.instance || version) {
+      this.dbConnection = connect({ version });
       IndexedDBOperator.instance = this;
     }
 
     return IndexedDBOperator.instance;
   }
 
-  static getInstance() {
-    return new IndexedDBOperator();
+  static getInstance(version) {
+    return new IndexedDBOperator(version);
+  }
+
+  getVersion() {
+    return new Promise((resolve, reject) => {
+      this.dbConnection.then(db => resolve(db.version)).catch(err => reject(err));
+    });
+  }
+
+  containsObjectStore(name) {
+    return new Promise((resolve, reject) => {
+      this.dbConnection.then(db => {
+        try {
+          resolve(db.objectStoreNames.contains(name));
+        } catch(err) {
+          reject(err);
+        }
+      })
+    });
   }
 
   createObjectStore(name, keyPath) {
