@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/hi2048/IndexedDBOperator#readme",
   "dependencies": {
-    "hi2048-utils": "^1.0.3"
+    "hi2048-utils": "^1.0.4"
   }
 }
