@@ -1,17 +1,18 @@
-import connect from './connect';
+const utils = require('hi2048-utils');
+const connect = require('./connect');
 
 class IndexedDBOperator {
-  constructor(version) {
-    if(!IndexedDBOperator.instance || version) {
-      this.dbConnection = connect({ version });
+  constructor(version, name) {
+    if(!IndexedDBOperator.instance || version || name) {
+      this.dbConnection = connect({ name, version });
       IndexedDBOperator.instance = this;
     }
 
     return IndexedDBOperator.instance;
   }
 
-  static getInstance(version) {
-    return new IndexedDBOperator(version);
+  static getInstance(version, name) {
+    return new IndexedDBOperator(version, name);
   }
 
   getVersion() {
@@ -110,6 +111,10 @@ class IndexedDBOperator {
     });
   }
 
+  backups(objectStore, fileName) {
+    this.readAll(objectStore).then(list => utils.download(list, fileName));
+  }
+
   update(objectStore, data) {
     return new Promise((resolve, reject) => {
       this.dbConnection.then(db => {
@@ -143,4 +148,4 @@ class IndexedDBOperator {
   }
 }
 
-export default IndexedDBOperator;
+module.exports = IndexedDBOperator;

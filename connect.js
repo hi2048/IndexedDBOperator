@@ -1,4 +1,4 @@
-import config from './config';
+const config = require('./config');
 
 const connect = ({ name = config.name, version  }) => {
   const promise = new Promise((resolve, reject) => {
@@ -25,4 +25,4 @@ const connect = ({ name = config.name, version  }) => {
   return promise;
 }
 
-export default connect;
+module.exports = connect;

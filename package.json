@@ -1,0 +1,25 @@
+{
+  "name": "indexeddboperator",
+  "version": "1.0.0",
+  "description": "utils for IndexedDB, crud operations.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hi2048/IndexedDBOperator.git"
+  },
+  "keywords": [
+    "IndexedDB"
+  ],
+  "author": "苏小蜂",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hi2048/IndexedDBOperator/issues"
+  },
+  "homepage": "https://github.com/hi2048/IndexedDBOperator#readme",
+  "dependencies": {
+    "hi2048-utils": "^1.0.3"
+  }
+}
