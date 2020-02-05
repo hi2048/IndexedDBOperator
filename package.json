@@ -1,6 +1,6 @@
 {
-  "name": "indexeddb-operator",
-  "version": "1.0.1",
+  "name": "indexeddboperator",
+  "version": "1.0.0",
   "description": "utils for IndexedDB, crud operations.",
   "main": "index.js",
   "scripts": {
